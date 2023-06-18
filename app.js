@@ -2,6 +2,7 @@ require('dotenv').config();
 const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+const cors = require('cors');
 
 const upload = multer(); 
 const express = require('express');
@@ -9,6 +10,7 @@ const app = express();
 const pool = require('./db');
 
 app.use(express.json());
+app.use(cors());
 
 AWS.config.update({
   accessKeyId: process.env.ACCESSKEYID,
